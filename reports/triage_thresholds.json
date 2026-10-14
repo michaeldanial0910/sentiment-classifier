@@ -1,0 +1,9 @@
+{
+  "target_accuracy_on_auto_handled": 0.9,
+  "chosen_on": "val",
+  "thresholds": {
+    "tfidf_lr": 0.63,
+    "zeroshot_xlmr": 0.98,
+    "finetuned_xlmr": 0.8
+  }
+}

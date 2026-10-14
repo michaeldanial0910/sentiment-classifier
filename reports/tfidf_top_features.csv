@@ -1,0 +1,46 @@
+class,rank,ngram,weight
+negative,1,not,2.389
+negative,2,no,1.843
+negative,3,dirty,1.661
+negative,4,سيء,1.554
+negative,5,terrible,1.478
+negative,6,سي,1.463
+negative,7,غير,1.461
+negative,8,not stay,1.458
+negative,9,rude,1.381
+negative,10,worst,1.361
+negative,11,not recommend,1.24
+negative,12,told,1.236
+negative,13,poor,1.22
+negative,14,سيي,1.214
+negative,15,دون,1.18
+neutral,1,ok,1.822
+neutral,2,nothing special,1.284
+neutral,3,average,1.264
+neutral,4,not bad,1.251
+neutral,5,fine,1.097
+neutral,6,الخدمه سييه,1.096
+neutral,7,nice,1.028
+neutral,8,bit,1.01
+neutral,9,تعامل بعض,0.942
+neutral,10,جيد,0.906
+neutral,11,الموقع ممتاز,0.902
+neutral,12,location,0.895
+neutral,13,بعض الموظفين,0.849
+neutral,14,ليس,0.831
+neutral,15,good,0.828
+positive,1,great,2.254
+positive,2,loved,1.84
+positive,3,رايع,1.839
+positive,4,جيد جدا,1.588
+positive,5,perfect,1.414
+positive,6,great hotel,1.359
+positive,7,excellent,1.293
+positive,8,كل,1.247
+positive,9,best,1.168
+positive,10,مريحه,1.09
+positive,11,wonderful,1.086
+positive,12,fantastic,1.072
+positive,13,quiet,1.034
+positive,14,حسن,1.023
+positive,15,جميل,1.014
