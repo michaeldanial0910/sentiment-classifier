@@ -1,0 +1,15 @@
+# Direct dependencies (Python 3.12). Same pins as the churn/fraud projects where shared.
+# The transformer approaches run on Google Colab (notebooks/02_transformers_colab.ipynb);
+# torch/transformers below are only needed locally for the demo's transformer mode.
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+scipy
+matplotlib==3.11.2
+seaborn==0.13.2
+joblib==1.6.0
+pyarrow
+streamlit==1.64.0
+jupyter==1.1.1
+ipykernel==7.4.0
+pytest==9.1.1
