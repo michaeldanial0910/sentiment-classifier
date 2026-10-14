@@ -188,17 +188,25 @@ Examples (translated where Arabic):
   (room / staff / location / price) would fit this data better than three classes.
 - **Old data:** 2016 (Arabic); the English reviews are older still (many mention 2007–2008). Language and expectations drift.
 
-## 8. Demo
+## 8. Demo app
 ```bash
-streamlit run app.py
+streamlit run app.py        # opens http://localhost:8501
 ```
-- **Single review:** type or pick an Arabic/English example. You get the label, the probabilities, the detected language,
-  and a "send to a person" flag when confidence is below the triage threshold.
-- **Batch:** upload a CSV with a `text` column, see the share of negatives and flagged reviews, and download the predictions.
-- **Model comparison:** the results table and figures.
-- **Transformer mode** (sidebar) needs `pip install torch transformers`. It uses `models/xlmr_finetuned/` if present
-  (download the folder the Colab run saved to Google Drive, `MyDrive/uneeq_sentiment/xlmr_finetuned`). Otherwise
-  it falls back to the public pretrained checkpoint (approach B).
+A five-page Streamlit app that walks through the whole project, built to be the walkthrough video instead of a
+screen recording of code:
+
+| Page | What it shows |
+|---|---|
+| **Try it** | Type or paste a review in Arabic or English (or pick an example). The baseline labels it live with a probability strip and a "send to a person" flag. *Pull a random test review* also shows what all three models said about that exact review, next to its star rating. |
+| **Results** | Macro-F1 with 95% bootstrap intervals per language, per-class F1, an interactive confusion matrix, a **triage simulator** (move the confidence threshold, see how many reviews are handled automatically and how accurately), and cost. |
+| **Mistakes** | The 50-error audit, six annotated examples (translated), and a filterable browser of every test mistake with all three models' answers. |
+| **The data** | The Booking.com leakage words, label mix, review lengths and sources. |
+| **Batch** | Paste many reviews or upload a CSV with a `text` column: negatives first, low-confidence ones flagged, download as CSV. |
+
+The **live transformer** is optional (toggle on *Try it*): `pip install -r requirements-transformer.txt`. It uses
+`models/xlmr_finetuned/` if you copy in the folder the Colab run saved to Google Drive
+(`MyDrive/uneeq_sentiment/xlmr_finetuned`); otherwise it downloads the public pretrained checkpoint (approach B).
+Everything else runs on the stored predictions, so no GPU or torch is needed for the demo.
 
 CLI:
 ```bash
@@ -227,7 +235,7 @@ python -m src.train_classical    # approach A + val search (~13 min on a laptop)
 #                   unzip transformer_outputs.zip into reports/predictions/  (already included in this repo)
 python -m src.evaluate           # metrics, CIs, confusion matrices
 python -m src.error_analysis     # errors, length, agreement, triage thresholds
-pytest -q                        # 19 tests
+pytest -q                        # 24 tests (pipeline + app smoke tests)
 ```
 
 ## 10. Repository layout
@@ -245,8 +253,11 @@ notebooks/
   02_transformers_colab.ipynb  approaches B + C as executed on Colab (outputs included)
   make_*_notebook.py           code that generates the notebooks
 reports/               metrics, CIs, triage, audit sample, figures, predictions of all three models
-tests/                 cleaning, split integrity, leakage, prediction coverage
-app.py                 Streamlit demo
+tests/                 cleaning, split integrity, leakage, prediction coverage, app pages render
+app.py                 Streamlit app entry (navigation)
+app_pages/             the five app pages
+app_lib/ui.py          app design tokens, CSS, shared components and cached data loading
+.streamlit/config.toml app theme
 ```
 
 ## Citation

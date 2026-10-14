@@ -1,19 +1,21 @@
 # Walkthrough video: notes (target 4–5 min)
 
-1. **Problem (30 s).** A hotel group gets feedback in Arabic and English. Goal: sort it into negative / neutral / positive
-   so the support team sees complaints first. Compare a classical model against transformers fairly.
-2. **Data and the leakage catch (60 s).** Open `notebooks/01_eda.ipynb`.
-   - Two sources, same domain (hotel reviews), same 1–5 star scale → same label rule.
-   - Show the leakage table: 44% of Arabic reviews start with a Booking.com score word that *is* the label. Stripped.
-   - Label mix: about 70% positive, so macro-F1 is the metric, not accuracy.
-3. **Fair comparison setup (40 s).** One split, stratified by language × label. Same test rows for every model.
-   The Colab notebook rebuilds the data and checks its SHA-256 against the local file before training.
-   One evaluation script scores all three.
-4. **Results (60 s).** Show `reports/figures/model_comparison.png` and the confusion matrices.
-   Read the headline numbers from the README table; point at neutral as the hard class.
-5. **Errors (45 s).** Two or three examples from the README error table: a mixed "liked/disliked" review,
-   a review whose stars contradict its text, a short Arabic fragment.
-6. **Demo (45 s).** `streamlit run app.py`: an Arabic and an English example, the low-confidence flag,
-   the batch tab with a CSV. CLI: `python -m src.predict "..."`.
-7. **Limitations and what I'd do next (30 s).** Simulated vs real feedback, noisy star labels, one domain,
-   pre-processed English text. Next: human-labelled sample, aspect-based sentiment (room/staff/location).
+Record the Streamlit app (`streamlit run app.py`, browser at full screen) instead of the code.
+
+1. **Try it (60 s).** One sentence on the problem: a hotel group gets feedback in Arabic and English and wants
+   complaints first. Click *Mixed, Arabic*: point at the probability strip and the "send to a person" flag.
+   Click *Contrast, English*. Then *Pull a random test review* and show what all three models said about it,
+   next to the star rating.
+2. **The data (60 s).** The leakage table: 44% of Arabic reviews start with a Booking.com word that *is* the
+   label, so it is stripped before training. Then the label mix (about 70% positive, which is why the metric
+   is macro-F1) and the short Arabic reviews.
+3. **Results (75 s).** The fair setup in one line: same split, same test rows, same evaluation code, and the
+   Colab run checked the dataset's SHA-256 before training. The interval chart: fine-tuned XLM-R best (0.697),
+   only +0.034 over TF-IDF, the untrained transformer worst (0.517). Switch the confusion matrix to Arabic:
+   positive read as neutral is the main error. Move the triage slider: at 0.80 the model handles 72% of
+   reviews at about 90% accuracy.
+4. **Mistakes (45 s).** The audit bar: 70% are one class off on mixed reviews, about a quarter are star
+   ratings that contradict the text. Read one example of each. Toggle "only reviews all three got wrong".
+5. **Batch (20 s).** The pasted inbox: negatives first, flagged rows, the download button.
+6. **Limitations and next steps (20 s).** Star ratings as labels, one domain, two sources that differ in more
+   than language. Next: a human-labelled sample and aspect-based sentiment (room, staff, location, price).

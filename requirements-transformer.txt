@@ -1,0 +1,4 @@
+# Optional: only for the transformer in the demo (Try it > "Also run the transformer") and
+# `python -m src.predict --model transformer`. Training/evaluation of the transformers ran on Colab.
+torch>=2.4
+transformers>=4.44,<5
