@@ -1,0 +1,4 @@
+model,name,ms_per_review,hardware,size_mb,training
+tfidf_lr,A · TF-IDF + LogReg,0.799,CPU (batch of whole test set),13.0,"≈1 min, laptop CPU"
+zeroshot_xlmr,B · XLM-R pretrained (no training),2.334,Tesla T4,1112.0,none
+finetuned_xlmr,C · XLM-R fine-tuned,1.912,Tesla T4,1112.0,"15.1 min, T4 GPU"
