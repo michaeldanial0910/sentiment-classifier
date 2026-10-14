@@ -6,7 +6,7 @@ from src.predict import available_transformer_name, predict_tfidf, predict_trans
 
 EXAMPLES = {
     "Mixed, Arabic": "الفطور ممتاز والموظفين متعاونين، لكن الغرفة صغيرة جدا والسعر مبالغ فيه",
-    "Complaint, Gulf dialect": "اخر مره احجز ف هالفندق. تعامل الطاقم غير كفوء والغرف ريحتها مو حلوه",
+    "Complaint, Arabic": "لن اكرر التجربة، الغرفة متسخة والموظفين غير متعاونين ابدا",
     "Praise, Arabic": "الموقع رائع وقريب من الحرم والنظافة ممتازة وطاقم الاستقبال بشوشين",
     "Contrast, English": "so wanted to love this hotel but the room was tired and the staff couldn't care less",
     "Lukewarm, English": "hotel was ok, nothing special. breakfast average, location fine for one night",

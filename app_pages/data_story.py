@@ -61,15 +61,18 @@ c1.altair_chart(gaps.properties(height=130), theme=None, width="stretch")
 c1.html('<p class="muted">That is why the metric is macro-F1: a model that always says “positive” would score '
         '70% accuracy and be useless.</p>')
 
-lengths = reviews.assign(words=reviews["text"].str.split().str.len().clip(upper=300))
-lengths["Language"] = lengths["lang"].map(LANG_NAME)
+words = reviews["text"].str.split().str.len().clip(upper=300)
+lengths = (pd.DataFrame({"Language": reviews["lang"].map(LANG_NAME), "bin": (words // 10) * 10})
+           .groupby(["Language", "bin"]).size().rename("reviews").reset_index())   # pre-binned: 80 rows, not 40k
 c2.markdown("**Arabic reviews are much shorter**")
 hist = alt.Chart(lengths).mark_bar(opacity=0.85, binSpacing=1).encode(
-    x=alt.X("words:Q", bin=alt.Bin(step=10), title="words per review (capped at 300)"),
-    y=alt.Y("count():Q", title="reviews", stack=None),
+    x=alt.X("bin:Q", bin="binned", title="words per review (capped at 300)"),
+    x2="bin_end:Q",
+    y=alt.Y("reviews:Q", title="reviews", stack=None),
     color=alt.Color("Language:N", scale=alt.Scale(domain=["Arabic", "English"], range=["#24305E", "#9AA6C8"]),
                     legend=alt.Legend(orient="top", title=None)),
-    tooltip=["Language", alt.Tooltip("count():Q", title="reviews")])
+    tooltip=["Language", alt.Tooltip("bin:Q", title="from words"), alt.Tooltip("reviews:Q", format=",")],
+).transform_calculate(bin_end="datum.bin + 10")
 c2.altair_chart(hist.properties(height=200), theme=None, width="stretch")
 c2.html(f'<p class="muted">Median {int(ar["text"].str.split().str.len().median())} words in Arabic, '
         f'{int(en["text"].str.split().str.len().median())} in English. Booking\'s form also splits each review into '

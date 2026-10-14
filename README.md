@@ -193,7 +193,11 @@ Examples (translated where Arabic):
 streamlit run app.py        # opens http://localhost:8501
 ```
 A five-page Streamlit app that walks through the whole project, built to be the walkthrough video instead of a
-screen recording of code:
+screen recording of code.
+
+**30-second silent walkthrough:** [`demo/sentiment_demo.mp4`](demo/sentiment_demo.mp4), a real recording of this app
+(scripted with Playwright on a virtual display by `demo/record.py`, edited by `demo/build.py`).
+
 
 | Page | What it shows |
 |---|---|

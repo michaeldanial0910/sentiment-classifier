@@ -22,3 +22,4 @@ notebooks/*.blank.ipynb
 
 # Regenerable report with full review texts (third-party data; see README)
 reports/error_examples.csv
+demo/*.png
