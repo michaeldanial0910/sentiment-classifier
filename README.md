@@ -1,7 +1,12 @@
 # Arabic/English Sentiment Classifier
 
 > UneeQ Interns · Machine Learning Track · October 2026
-> **Demo video:** [YouTube/LinkedIn link](#) · **Author:** Michael Danial
+> **Demo video:** [`demo/sentiment_demo.mp4`](demo/sentiment_demo.mp4) (30 s, the Streamlit app) · **Author:** Michael Danial
+
+<p align="center">
+  <img src="docs/screenshots/app_try_it.png" alt="Try it page: live label, probability strip and send-to-a-person flag" width="49%">
+  <img src="docs/screenshots/app_triage.png" alt="Results page: confidence triage simulator" width="49%">
+</p>
 
 A hotel group gets customer feedback in Arabic and English. This project sorts each review into **negative,
 neutral or positive** so the support team can see complaints first. It compares three approaches on exactly the
