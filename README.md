@@ -1,7 +1,7 @@
 # Arabic/English Sentiment Classifier
 
 > UneeQ Interns · Machine Learning Track · October 2026
-> **Demo video:** [`demo/sentiment_demo.mp4`](demo/sentiment_demo.mp4) (30 s, the Streamlit app) · **Author:** Michael Danial
+> **Demo video:** [watch on YouTube](https://youtu.be/233wVhkLtE0) · file: [`demo/sentiment_demo.mp4`](demo/sentiment_demo.mp4) (30 s, the Streamlit app) · **Author:** Michael Danial
 
 <p align="center">
   <img src="docs/screenshots/app_try_it.png" alt="Try it page: live label, probability strip and send-to-a-person flag" width="49%">
